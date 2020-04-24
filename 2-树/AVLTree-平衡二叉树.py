@@ -1,4 +1,4 @@
-allowed_imbalance =1
+
 class AVLNode:
 
     def __init__(self, value):
@@ -6,6 +6,7 @@ class AVLNode:
         self.left = None
         self.right = None
         self.height = 0
+
 
 class AVLTree:
     def __init__(self):
@@ -76,15 +77,19 @@ class AVLTree:
         if node is None:
             return node
         else:
-            if (self.height(node.left) - self.height(node.right)) > allowed_imbalance:
+            if (self.height(node.left) - self.height(node.right)) > 1:
                 if self.height(node.left.left) >= self.height(node.left.right):
+                    # 进行左节点单旋转
                     node = self.rotatewithleftChild(node)
                 else:
+                    # 进行双旋转
                     node = self.doublertleftChild(node)
-            elif (self.height(node.right) - self.height(node.left)) > allowed_imbalance:
+            elif (self.height(node.right) - self.height(node.left)) > 1:
                 if self.height(node.right.right) >= self.height(node.right.left):
+                    # 进行右节点单旋转
                     node = self.rotatewithrightChild(node)
                 else:
+                    # 进行双旋转
                     node = self.doublertrightChild(node)
             node.height = max(self.height(node.left), self.height(node.right))+1
             return node
@@ -93,7 +98,8 @@ class AVLTree:
         n1 = n2.left
         n2.left = n1.right
         n1.right = n2
-        n2.height = max(self.height(n2.left), self.height(n2.right))+ 1
+        # 交换值后计算深度
+        n2.height = max(self.height(n2.left), self.height(n2.right))+1
         n1.height = max(self.height(n1.left), n2.height) + 1
         return n1
 
@@ -101,15 +107,17 @@ class AVLTree:
         n2 = n1.right
         n1.right = n2.left
         n2.left = n1
-        n1.height = max(self.height(n1.left), self.height(n1.right))+ 1
+        n1.height = max(self.height(n1.left), self.height(n1.right))+1
         n2.height = max(self.height(n2.right), n1.height)+ 1
         return n2
 
     def doublertleftchild(self, n3):
+        # 标准AVL双旋转，先右旋，再左旋
         n3.left = self.rotatewithrightchild(n3.left)
         return self.rotatewithleftchild(n3)
 
     def doublertrightchild(self, n3):
+        # 标准AVL双旋转，先左旋，再右旋
         n3.right = self.rotatewithleftchild(n3.right)
         return self.rotatewithrightchild(n3)
 

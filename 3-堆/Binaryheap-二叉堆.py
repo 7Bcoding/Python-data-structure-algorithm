@@ -1,11 +1,13 @@
 import random
 
+
 class Binaryheap:
     def __init__(self, heapsize, heaplist=[]):
         self.currentsize = heapsize
         self.heaplist = heaplist
+
     # 构建一个二叉堆
-    def Binaryheap(self,hlist):
+    def Binaryheap(self, hlist):
         self.currentsize = len(hlist)
         self.heaplist = []
         for i in range(self.currentsize):
@@ -33,23 +35,20 @@ class Binaryheap:
 
     def deleteMin(self):
         minvalue = self.findMin()
-        self.heaplist[1] = self.heaplist[self.currentsize-1]
+        self.heaplist[0] = self.heaplist[self.currentsize-1]
         self.percolatedown(1)
         return minvalue
 
     # 从某个节点开始下滤，梳理堆的大小顺序，更小的值会顶到上面
     def percolatedown(self, hole):
-
+        # 从hole所处的节点开始下滤
         tmp = self.heaplist[hole]
-        minheap = 1
         while hole * 2 <= self.currentsize:
-            if hole * 2 != self.currentsize:
-                if self.heaplist[hole*2] < self.heaplist[hole*2+1]:
+            minheap = hole*2
+            if hole * 2 != self.currentsize and (self.heaplist[hole*2] < self.heaplist[hole*2+1]):
                     # 比较左右两个节点，更小的值赋给minheap
-                    minheap = hole * 2
-                else:
-                    minheap = hole * 2 + 1
-            # 比较minheap和tmp大小，若小于，将更小值推上父节点，反之将tmp推至父节点
+                    minheap = hole*2+1
+            # 比较minheap和tmp大小，若小于，将minheap推上父节点，反之将tmp推至父节点
             if self.heaplist[minheap] < tmp:
                 self.heaplist[hole] = self.heaplist[minheap]
             else:

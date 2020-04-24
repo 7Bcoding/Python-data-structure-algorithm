@@ -1,16 +1,19 @@
+"""
+左式堆：
+(1)堆序性，一般左式堆都是使用最小堆（也可以实现最大堆）
+对于最小堆，任意结点关键字大于或等于其父结点的关键字，也就是key(i) >= key(parent(i))。
+(2)左边树更深，任意结点的左儿子零路径长大于或等于右儿子零路径长————
+也就是distance(left(i)) >= distance(right(i))；任意结点的零路径长比右儿子的零路径长最小值多1，
+即 distance(i)=1+distance(right(i))。
+"""
+
+
 class LeftistNode:
     def __init__(self, value, left, right, npl):
         self.value = value
         self.left = left
         self.right = right
         self.npl = npl
-
-# 左式堆：
-# (1)堆序性，一般左式堆都是使用最小堆（也可以实现最大堆）
-# 对于最小堆，任意结点关键字大于或等于其父结点的关键字，也就是key(i) >= key(parent(i))。
-# (2)左边树更深，任意结点的左儿子零路径长大于或等于右儿子零路径长————
-# 也就是distance(left(i)) >= distance(right(i))；任意结点的零路径长比右儿子的零路径长最小值多1，
-# 即 distance(i)=1+distance(right(i))。
 
 
 class Leftistheap:
