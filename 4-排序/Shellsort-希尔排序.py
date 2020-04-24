@@ -21,7 +21,7 @@ def shellsort1(a):
                     flag = j-step
             a[flag] = tmp
         step = step // 2
-    print('final a=', a)
+    print('排序后a=', a)
 
 # 第二种方法实现
 def shellsort2(a):
@@ -36,10 +36,12 @@ def shellsort2(a):
                 j -= step
             a[j] = tmp
         step = step // 2  # 更新步长
-    print(a)
+    print('排序后a=', a)
 
 
 if __name__ == '__main__':
-    a = [99, 52, 87, 65, 98, 1, 3, 55, 14, 32, 287, 54, 6, 95, 43, 13, 7, 23]
+    a = []
+    for _ in range(0, 30):
+        a.append(random.randint(0, 100))
     shellsort1(a)
     shellsort2(a)
