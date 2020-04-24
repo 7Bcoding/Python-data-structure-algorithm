@@ -74,5 +74,4 @@ if __name__ == '__main__':
     for _ in range(0, 30):
         a.append(random.randint(0, 100))
     print('排序前heaplist=', a)
-    print('size=', len(a))
     heapsort(a)
