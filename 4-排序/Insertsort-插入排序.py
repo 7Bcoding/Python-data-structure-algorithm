@@ -1,6 +1,7 @@
 """
 插入排序，也称为冒泡排序，从1到len(list)，倒序循环，不断交换相邻元素，较小（大）的顶到前面，时间复杂度O(N^2)
 """
+import random
 
 
 def insertsort1(alist):
@@ -30,5 +31,8 @@ def insertsort2(blist):
 
 
 if __name__ == '__main__':
-    a = [3, 4, 8, 54, 23, 76, 65, 33, 982, 235, 323]
+    a = []
+    for _ in range(0, 30):
+        a.append(random.randint(0, 100))
     insertsort1(a)
+    insertsort2(a)
