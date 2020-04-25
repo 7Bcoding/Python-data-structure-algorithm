@@ -46,3 +46,4 @@ def merge(a, tmpA, lpos, rpos, rend):
     for _ in range(0, lengthA):
         a[rend] = tmpA[rend]
         rend -= 1
+
