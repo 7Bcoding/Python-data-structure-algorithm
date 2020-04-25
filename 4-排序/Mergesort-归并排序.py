@@ -6,23 +6,20 @@
 占用较多的空间，并且每次从tmp拷贝回原数组都会消耗一些时间，减慢排序速度
 
 """
-import random
 
 
 def mergeSort(a):
-    tmparray = [0] * len(a)
-    a = mergesort(a, tmparray, 0, len(a)-1)
-    print(a)
+    tmparray = []
+    mergesort(a, tmparray, 0, len(a)-1)
 
 
 def mergesort(a, tmpA, left, right):
 
-    if left < right:
+    if (left < right):
         center = (left + right) // 2
         mergesort(a, tmpA, left, center)
         mergesort(a, tmpA, center+1, right)
         merge(a, tmpA, left, center+1, right)
-    return a
 
 
 def merge(a, tmpA, lpos, rpos, rend):
@@ -30,14 +27,14 @@ def merge(a, tmpA, lpos, rpos, rend):
     tmppos = lpos
     lengthA = rend - lpos + 1
     while lpos <= lend and rpos <= rend:
-        if a[lpos] < a[rpos]:
+        if lpos <= rpos:
             tmpA[tmppos] = a[lpos]
             tmppos += 1
             lpos += 1
         else:
             tmpA[tmppos] = a[rpos]
             tmppos += 1
-            rpos += 1
+            lpos += 1
     while lpos <= lend:
         tmpA[tmppos] = a[lpos]
         tmppos += 1
@@ -49,12 +46,3 @@ def merge(a, tmpA, lpos, rpos, rend):
     for _ in range(0, lengthA):
         a[rend] = tmpA[rend]
         rend -= 1
-    return a
-
-
-if __name__ == '__main__':
-    a = []
-    for _ in range(0, 30):
-        a.append(random.randint(0, 100))
-    print(a)
-    mergeSort(a)
