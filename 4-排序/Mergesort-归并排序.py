@@ -56,3 +56,5 @@ if __name__ == '__main__':
         a.append(random.randint(0, 100))
     print('排序前a=', a)
     mergeSort(a)
+
+
