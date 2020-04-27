@@ -8,28 +8,44 @@ def quickSort(a):
 def quicksort(a, left, right):
 
     # 三数中值法来确定枢纽值
-    pivot = median3(a, left, right)
-    i = left+1
-    j = right-2
-    while 1:
-        while a[i] < pivot:
-            i += 1
-        while a[j] > pivot:
-            j -= 1
-        if i < j:
-            swapvalue(a, i, j)
-        else:
-            break
+    if left < right:
+       if right-left >= 2:
+          pivot = median3(a, left, right)
+       else:
+          pivot = partition(L, left, right)
+       i = left+1
+       j = right-1
+       while i< j:
+           while i < j and a[i] < pivot:
+               i += 1
+           while i< j and a[j] > pivot:
+               j -= 1
+           if i < j:
+               swapvalue(a, a[i], a[j])
+           else:
+               break
     # 枢纽值位于right-1位置，将枢纽值与i最后停留的值进行交换
     # i最后停留的值为最后一个大于pivot的值，位于分割数组的中间位置
-    swapvalue(a, i, right-1)
-    print(a)
-    print('i= %d, j= %d, i-1= %d, ' % (i, j))
+       a[i] = pivot
+       print(a)
+       print('i= %d, j= %d, i-1= %d, ' % (i, j))
     # 将枢纽值两边的数组分割开，分别递归进行快速排序
-    if i<len(a) and j>0:
-        quicksort(a, i+1, right)
-        quicksort(a, left, i-1)
+       quicksort(a, i+1, right)
+       quicksort(a, left, i-1)
 
+def partition(L, left, right):
+    pivotkey = L[left]
+
+    while left < right:
+        while left < right and L[right] >= pivotkey:
+            right -= 1
+        L[left] = L[right]
+        while left < right and L[left] <= pivotkey:
+            left += 1
+        L[right] = L[left]
+
+    L[left] = pivotkey
+    return left
 
 def median3(a, left, right):
     center = (left + right) // 2
@@ -41,8 +57,8 @@ def median3(a, left, right):
     if a[right] < a[center]:
         swapvalue(a, right, center)
     # 将枢纽值放置在数组的倒数第2个位置（交换完毕再将枢纽值放到两边数组中间）
-    swapvalue(a, center, right-1)
-    return a[right-1]
+
+    return center
 
 
 def swapvalue(a, k1, k2):
