@@ -14,8 +14,8 @@ def quicksort(a, left, right):
 
 
 def quicksort_mid3(a, left, right):
-    # 三数中值法来确定枢纽值
-    if left < right and (right - left) >= 10:
+    # 三数中值法来确定枢纽值，下标差值大于10使用快速排序，否则使用插入排序，小数组插入排序效率更高
+    if left < right and (right - left) > 10:
         pivot = median3(a, left, right)
         i = left + 1
         j = right - 1
@@ -49,6 +49,7 @@ def insertsort(alist):
     print(alist)
 
 
+# 两数选出枢纽值法进行快速排序，效率比不上三数中值，但是小数组排序速度占优
 def partition(a, left, right):
     pivotkey = a[left]
     while left < right:
@@ -71,7 +72,6 @@ def median3(a, left, right):
         swapvalue(a, left, right)
     if a[right] < a[center]:
         swapvalue(a, right, center)
-    # 将枢纽值放置在数组的倒数第2个位置（交换完毕再将枢纽值放到两边数组中间）
     return a[center]
 
 
