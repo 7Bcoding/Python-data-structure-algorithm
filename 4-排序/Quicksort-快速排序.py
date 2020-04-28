@@ -36,17 +36,16 @@ def quicksort_mid3(a, left, right):
         insertsort(a)
 
 
-def insertsort(alist):
-
-    for i in range(1, len(alist)):
-        for j in range(i, 0, -1):
-            if alist[j] < alist[j-1]:
-                 tmp = alist[j]
-                 alist[j] = alist[j-1]
-                 alist[j-1] = tmp
-            else:
-                continue
-    print(alist)
+# 插入排序，用于长度小于10的小数组
+def insertsort(a):
+    for i in range(1, len(a)):
+        tmp = a[i]
+        j = i
+        while j > 0 and a[j-1] > tmp:
+            a[j] = a[j-1]
+            j -= 1
+        a[j] = tmp
+    print(a)
 
 
 # 两数选出枢纽值法进行快速排序，效率比不上三数中值，但是小数组排序速度占优

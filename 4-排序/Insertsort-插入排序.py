@@ -1,38 +1,52 @@
 """
-插入排序，也称为冒泡排序，从1到len(list)，倒序循环，不断交换相邻元素，较小（大）的顶到前面，时间复杂度O(N^2)
+插入排序思想：
+在首轮，选择第二项作为插入项，然后取出这一项放在一个变量中，和前一项比较而且小，则前一项后移到第二项的位置，
+然后第二项也就是插入项放在前一项的位置，第二轮选择第三项作为插入项然后取出和前一项也就是第二项比较如果小，
+第二项后移到插入项，然后插入相在和第一项比较如果小，则第一项后移到第二项，插入项放在第一项，以此类推。
+
+　冒泡排序：比较 （N-1)+(N-2)+...+2+1 = N*(N-1)/2=(N^2)/2
+
+　　　　　　　交换  0——N^2/2 = N^2/4
+
+　　　　　　　总时间 (N^2)*3/4
+
+　　选择排序：比较 （N-1)+(N-2)+...+2+1 = N*(N-1)/2=(N^2)/2
+
+　　　　　　　交换  0——3*（N-1）=3*（N-1）/2=3/2*N
+
+　　　　　　　总时间 N^2/2+3N/2
+
+　　插入排序：第一轮最多比较一次，第二轮最多比较俩次，最后一轮比较N-1次，所以最多比较N*(N-1)/2。
+
+　　　　　　　复制的次数和比较的次数大致相等，但是复制消耗的时间比交换要小.
+
+　　　　　　　比较 0——N*(N-1)/2=N*(N-1)/4=N^2/4
+
+　　　　　　　复制 0——N*(N-1)/2=N*(N-1)/4=N^2/4
+
+　　　　　　　总时间 (N^2)/2
+
+插入排序，比选择排序快一点，比冒泡排序快一倍
+
 """
 import random
 
 
-def insertsort1(alist):
-
-    for i in range(1, len(alist)):
-        for j in range(i, 0, -1):
-            if alist[j] < alist[j-1]:
-                 tmp = alist[j]
-                 alist[j] = alist[j-1]
-                 alist[j-1] = tmp
-            else:
-                continue
-    print(alist)
-
-
-def insertsort2(blist):
-
-    for i in range(1, len(blist)):
-        tmp = blist[i]
-        for j in range(i, 0, -1):
-            if blist[j] < blist[j-1]:
-                blist[j] = blist[j-1]
-            else:
-                continue
-        blist[j] = tmp
-    print(blist)
+def insertsort(a):
+    for i in range(1, len(a)):
+        tmp = a[i]
+        j = i-1
+        while j >= 0 and a[j] > tmp:
+            a[j+1] = a[j]
+            j -= 1
+        a[j+1] = tmp
+    print(a)
 
 
 if __name__ == '__main__':
     a = []
     for _ in range(0, 30):
         a.append(random.randint(0, 100))
-    insertsort1(a)
-    insertsort2(a)
+    print('排序前a=', a)
+    insertsort(a)
+
