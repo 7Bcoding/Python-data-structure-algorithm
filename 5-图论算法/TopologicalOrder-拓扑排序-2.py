@@ -10,31 +10,26 @@ from collections import defaultdict
 
 class Graph:
     def __init__(self, vertices):
-        self.graph = defaultdict(list)  # 邻接表形式实现图-- 键:字典 , 值:列表(每个顶点指向的顶点)
-        self.V = vertices  # 顶点数
+        self.graph = defaultdict(list)        # 邻接表形式实现图-- 键:字典 , 值:列表(每个顶点指向的顶点)
+        self.V = vertices                     # 顶点数
 
     def addEdge(self, u, v):
         self.graph[u].append(v)
 
-    # 深度遍历的方式将入度最多的顶点先入栈，较少的顶点后入栈，入度为0的顶点最先出栈
-    def toposort(self, v, visited, stack):
-        # 访问过的顶点标记为true
-        visited[v] = True
+    def toposort(self, v, visited, stack):    # 深度遍历的方式将入度最多的顶点先入栈，较少的顶点后入栈，入度为0的顶点最先出栈
+        visited[v] = True                     # 访问过的顶点标记为true
         for i in self.graph[v]:
             if visited[i] is False:
                 self.toposort(i, visited, stack)
-        # 该顶点无任何出度，则入栈
-        stack.insert(0, v)
+
+        stack.insert(0, v)                    # 该顶点无任何出度，则入栈
 
     def topologicalsort(self):
         visited = [False] * (self.V+1)
         stack = []
-
         for i in range(1, self.V):
-            # 访问过的顶点不再访问
-            if visited[i] is False:
+            if visited[i] is False:           # 访问过的顶点不再访问
                 self.toposort(i, visited, stack)
-
         print(stack)
 
 
