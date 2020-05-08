@@ -26,8 +26,8 @@ def shellsort1(a):
 
 # 第二种方法实现
 def shellsort2(a):
-    b = len(a)  # 列表长度
-    step = b // 2  # 初始步长设置为总长度的一半
+    b = len(a)               # 列表长度
+    step = b // 2            # 初始步长设置为总长度的一半
     while step >= 1:
         for i in range(b):
             tmp = a[i]
@@ -36,7 +36,7 @@ def shellsort2(a):
                 a[j] = a[j - step]
                 j -= step
             a[j] = tmp
-        step = step // 2  # 更新步长
+        step = step // 2     # 更新步长
     print('排序后a=', a)
 
 

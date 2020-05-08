@@ -20,30 +20,25 @@ class Leftistheap:
     def __init__(self):
         self.root = None
 
-    # h1，h2分别表示被合并的堆和要插入的堆
-    def merge(self, h1, h2):
+    def merge(self, h1, h2):                # h1，h2分别表示被合并的堆和要插入的堆
         if h1 is None:
             return h2
         if h2 is None:
             return h1
         if h1.value > h2.value:
-            # h1的值大于h2的值，将h1合并入h2中
-            return self.mergeheap(h2, h1)
+            return self.mergeheap(h2, h1)   # h1的值大于h2的值，将h1合并入h2中
         else:
             return self.mergeheap(h1, h2)
 
-    # h1为被合并堆，h2为插入堆
-    def mergeheap(self, h1, h2):
+    def mergeheap(self, h1, h2):            # h1为被合并堆，h2为插入堆
         if h1.left is None:
             h1.left = h2
         else:
             h1.right = self.merge(h1.right, h2)
-            # 若不满足左式堆性质——左节点的npl小于右节点npl，则将左右节点交换
-            if h1.left.npl < h1.right.npl:
+            if h1.left.npl < h1.right.npl:  # 若不满足左式堆性质——左节点的npl小于右节点npl，则将左右节点交换
                 self.swapchildren(h1)
             h1.npl = h1.right.npl + 1
-        # 返回被合并的h1的最终合并状态
-        return h1
+        return h1                           # 返回被合并的h1的最终合并状态
 
     # 插入操作，本质是合并，将新节点创建，然后和root节点合并
     def insert(self, value):

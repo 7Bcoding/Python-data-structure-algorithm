@@ -24,8 +24,7 @@ class Binaryheap:
         hole = self.currentsize + 1
         self.heaplist[0] = value
         while hole > 0:
-            # 插入的值大于空洞位置的父节点，则作为父节点的子节点插入
-            if value > self.heaplist[hole/2]:
+            if value > self.heaplist[hole/2]:  # 插入的值大于空洞位置的父节点，则作为父节点的子节点插入
                 break
             else:
                 # 小于父节点，则把父节点移至空洞位置（作为子节点），并将空洞推至父节点位置，继续循环
@@ -46,15 +45,12 @@ class Binaryheap:
         while hole * 2 <= self.currentsize:
             minheap = hole*2
             if hole * 2 != self.currentsize and (self.heaplist[hole*2] < self.heaplist[hole*2+1]):
-                    # 比较左右两个节点，更小的值赋给minheap
-                    minheap = hole*2+1
-            # 比较minheap和tmp大小，若小于，将minheap推上父节点，反之将tmp推至父节点
-            if self.heaplist[minheap] < tmp:
+                minheap = hole*2+1              # 比较左右两个节点，更小的值赋给minheap
+            if self.heaplist[minheap] < tmp:    # 比较minheap和tmp大小，若小于，将minheap推上父节点，反之将tmp推至父节点
                 self.heaplist[hole] = self.heaplist[minheap]
             else:
                 break
-            # 每次都将hole下移至原minheap的位置，继续比较出hole的子节点的更小值
-            hole = minheap
+            hole = minheap                      # 每次都将hole下移至原minheap的位置，继续比较出hole的子节点的更小值
         self.heaplist[hole] = tmp
 
 
