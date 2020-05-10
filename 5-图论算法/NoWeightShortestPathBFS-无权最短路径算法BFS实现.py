@@ -32,11 +32,11 @@ class Graph:
         self.graph[u].append(v)
 
     def unweighted(self, start, end):
-        known = [0] * (self.V+1)
-        dist = [0] * (self.V+1)
-        prev = [0] * (self.V+1)
+        known = [0] * (self.V+1)      # 标记是否访问过
+        dist = [0] * (self.V+1)       # 记录起始点到每个节点(下标值表示每个节点)的最短路径长(下标对应列表值表示路径长)
+        prev = [0] * (self.V+1)       # 记录访问过的节点的前驱节点(列表下标值为节点，下标对应列表值为前驱节点)
         q = Queue()
-        dist[start] = 0
+        dist[start] = 0               # 起始点到自己的路径长为0
         q.put(start)
         while not q.empty():
             v = q.get()                # 队列中弹出节点，并计算到该节点的路径长
@@ -49,6 +49,7 @@ class Graph:
                     q.put(u)
         self.countweight(start, end, prev, dist)
 
+    # 计算最短路径长
     def countweight(self, start, end, prev, dist):
         v = start
         weight = 0
@@ -64,6 +65,7 @@ class Graph:
             v = vindex
         print('最短路径长为%d' % weight)
 
+    # 打印最短路径
     def pathprint(self, v, path, prev, end):
         if path != str(v):
             path = path + '-->' + str(v)
