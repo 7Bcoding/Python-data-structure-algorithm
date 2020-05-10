@@ -32,34 +32,82 @@ class Graph:
         self.graph[u].append(v)
 
     def unweighted(self, start, end):
-        known = []
-        dist = []
-        prev = []
+        known = [0] * (self.V+1)
+        dist = [0] * (self.V+1)
+        prev = [0] * (self.V+1)
         q = Queue()
         dist[start] = 0
         q.put(start)
-        while q:
-            v = q.get()
+        while not q.empty():
+            v = q.get()                # 队列中弹出节点，并计算到该节点的路径长
+            known[v] = 1
             for u in self.graph[v]:
-                prev[u] = v
-                dist[u] += 1
-                q.put(u)
+                if known[u] == 0:
+                    known[u] = 1
+                    dist[u] = dist[v] + 1  # 到该节点累计路径长=start到上一个节点路径长+1
+                    prev[u] = v
+                    q.put(u)
+        self.countweight(start, end, prev, dist)
+
+    def countweight(self, start, end, prev, dist):
+        v = start
+        weight = 0
+        path = str(start)
+        path, flag = self.pathprint(start, path, prev, end)
+        print('访问节点顺序为%s' % path)
+        while prev.count(v):
+            if prev[end] == v:
+                weight = weight + 1
+                break
+            vindex = prev.index(v)
+            weight = weight + 1
+            v = vindex
+        print('最短路径长为%d' % weight)
+
+    def pathprint(self, v, path, prev, end):
+        if path != str(v):
+            path = path + '-->' + str(v)
+        if prev.count(v):
+            i = 1
+            while i < len(prev):
+                if v == prev[i]:
+                    if v == end:
+                        return path, 1
+                    oldpath = path
+                    path, flag = self.pathprint(i, path, prev, end)
+                    if flag == 0:
+                        path = oldpath
+                    else:
+                        break
+                i += 1
+        else:
+            if v == end:
+                return path, 1
+            else:
+                return path, 0
+        return path, flag
 
 
 if __name__ == '__main__':
     g = Graph(7)
-    g.addEdge(1, 3)
-    g.addEdge(1, 4)
     g.addEdge(1, 2)
+    g.addEdge(1, 4)
     g.addEdge(2, 4)
     g.addEdge(2, 5)
+    g.addEdge(3, 1)
     g.addEdge(3, 6)
     g.addEdge(4, 3)
+    g.addEdge(4, 5)
     g.addEdge(4, 6)
     g.addEdge(4, 7)
-    g.addEdge(5, 4)
     g.addEdge(5, 7)
     g.addEdge(7, 6)
 
+    g.unweighted(3, 7)
     g.unweighted(1, 6)
+    g.unweighted(2, 7)
+    g.unweighted(3, 5)
+    g.unweighted(2, 3)
+    g.unweighted(2, 6)
+    g.unweighted(5, 6)
 

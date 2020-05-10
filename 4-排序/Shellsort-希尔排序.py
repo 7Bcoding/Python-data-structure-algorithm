@@ -24,6 +24,7 @@ def shellsort1(a):
         step = step // 2
     print('排序后a=', a)
 
+
 # 第二种方法实现
 def shellsort2(a):
     b = len(a)               # 列表长度
