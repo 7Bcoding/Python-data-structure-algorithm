@@ -55,14 +55,7 @@ class Graph:
         path = str(start)
         path, flag = self.pathprint(start, path, prev, end)
         print('访问节点顺序为%s' % path)
-        while prev.count(v):
-            if prev[end] == v:
-                weight = weight + 1
-                break
-            vindex = prev.index(v)
-            weight = weight + 1
-            v = vindex
-        print('最短路径长为%d' % weight)
+        print('最短路径长为%d' % dist[end])
 
     # 打印最短路径
     def pathprint(self, v, path, prev, end):
