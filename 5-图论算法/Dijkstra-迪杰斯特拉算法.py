@@ -1,12 +1,14 @@
 from collections import defaultdict
 
+
+# 顶点类
 class Vertex:
     def __init__(self, vid, outlist):
-        self.vid = vid
-        self.outlist = outlist
-        self.known = False
-        self.dist = float('inf')
-        self.prev = 0
+        self.vid = vid  # 出边
+        self.outlist = outlist  # 出边指向的顶点id的列表，也可以理解为邻接表(只存储索引值，不存储顶点对象)
+        self.known = False  # 是否访问过
+        self.dist = float('inf')  # s到该点的距离,默认为无穷大
+        self.prev = 0  # 上一个顶点的id，默认为0
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):
@@ -17,18 +19,25 @@ class Vertex:
     def __hash__(self):
         return hash(self.vid)
 
+
 #存储边的权值
 def addEdge(front, back, edges, value):
     edges[front].insert(back, value)
 
+
 def get_unknown_min(vlist):
-    min = 0
+    min = vlist[1]
     index = 0
     for i in range(1, len(vlist)):
         if vlist[i].known is True:
             continue
         else:
-            if vlist[i]
+            if vlist[i].dist < min:
+                min = vlist[i].dist
+                index = i
+    vset.remove(vlist[index])
+    return vlist[index]
+
 
 def dijkstra(vlist, vset, edges, start):
 
@@ -36,8 +45,19 @@ def dijkstra(vlist, vset, edges, start):
 
     while len(vset) != 0:
         v = get_unknown_min()
-
-
+        v.known = True
+        for u in v.outlist:
+            if vlist[u].known is True:
+                continue
+            else:
+                if vlist[u].dist == float('inf'):
+                    vlist[u].dist = v.dist + edges[v][u]
+                    vlist[u].prev = v.dist
+                if vlist[u].dist > (v.dist + edges[v][u]):
+                    vlist[u].dist = v.dist + edges[v][u]
+                    vlist[u].prev = v.dist
+                else:
+                    pass
 
 
 if __name__ == '__main__':
