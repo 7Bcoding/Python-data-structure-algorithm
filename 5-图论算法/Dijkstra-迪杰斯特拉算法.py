@@ -19,11 +19,9 @@ class Vertex:
     def __hash__(self):
         return hash(self.vid)
 
-
 #存储边的权值
 def addEdge(front, back, edges, value):
     edges[front].insert(back, value)
-
 
 def get_unknown_min(vlist):
     min = vlist[1]
@@ -38,11 +36,8 @@ def get_unknown_min(vlist):
     vset.remove(vlist[index])
     return vlist[index]
 
-
 def dijkstra(vlist, vset, edges, start):
-
     vlist[start].dist = 0
-
     while len(vset) != 0:
         v = get_unknown_min()
         v.known = True
@@ -58,6 +53,28 @@ def dijkstra(vlist, vset, edges, start):
                     vlist[u].prev = v.dist
                 else:
                     pass
+
+
+def printpath(start, end):
+    path = []
+    path = getpath(start, end, start, path)
+    spath = ''
+    for s in range(0, len(path)-1):
+        spath = 'V' + str(path(s)) + '-->'
+    spath = spath + str(path[len(path-1)])
+    print('最短路径为 %s', spath)
+    print('该最短路径的长度为', vlist[end].dist)
+
+def getpath(start, end, index, path):
+    if index == start:
+        path.insert(0, start)
+        return path
+    if vlist[index].dist == float('inf'):
+        print('从起点到该顶点根本没有路径')
+        return None
+    path.insert(index)
+    path = getpath(start, end, vlist[index].prev, path)
+    return path
 
 
 if __name__ == '__main__':
@@ -87,3 +104,5 @@ if __name__ == '__main__':
     vlist = [False, v1, v2, v3, v4, v5, v6, v7]
     vset = set([v1, v2, v3, v4, v5, v6, v7])
     dijkstra(vlist, vset, edges, 1)
+    printpath(1, 3)
+    printpath(1, 6)
