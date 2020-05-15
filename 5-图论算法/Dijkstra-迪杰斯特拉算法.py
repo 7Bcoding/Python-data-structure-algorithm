@@ -20,11 +20,11 @@ class Vertex:
         return hash(self.vid)
 
 
-edges = defaultdict(list)
-
-
 def addEdge(front, back, value):               # 存储边的权值
     edges[front].insert(back, value)
+
+
+edges = defaultdict(list)
 
 
 def get_unknown_min(vlist, vset):
@@ -107,6 +107,7 @@ if __name__ == '__main__':
     v6 = Vertex(6, [])
     v7 = Vertex(7, [6])
     vlist = [False, v1, v2, v3, v4, v5, v6, v7]
+    vset = set([v1, v2, v3, v4, v5, v6, v7])
 
     dijkstra(vlist, vset, edges, 1)
     printpath(1, 3)
