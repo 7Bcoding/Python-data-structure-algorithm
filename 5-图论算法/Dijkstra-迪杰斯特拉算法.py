@@ -1,14 +1,13 @@
 from collections import defaultdict
 
 
-# 顶点类
-class Vertex:
+class Vertex:                              # 顶点类
     def __init__(self, vid, outlist):
-        self.vid = vid  # 出边
-        self.outlist = outlist  # 出边指向的顶点id的列表，也可以理解为邻接表(只存储索引值，不存储顶点对象)
-        self.known = False  # 是否访问过
-        self.dist = float('inf')  # s到该点的距离,默认为无穷大
-        self.prev = 0  # 上一个顶点的id，默认为0
+        self.vid = vid                     # 出边
+        self.outlist = outlist             # 出边指向的顶点id的列表，也可以理解为邻接表(只存储索引值，不存储顶点对象)
+        self.known = False                 # 是否访问过
+        self.dist = float('inf')           # s到该点的距离,默认为无穷大
+        self.prev = 0                      # 上一个顶点的id，默认为0
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):
@@ -19,12 +18,16 @@ class Vertex:
     def __hash__(self):
         return hash(self.vid)
 
-#存储边的权值
-def addEdge(front, back, edges, value):
+
+edges = defaultdict(list)
+
+
+def addEdge(front, back, value):           # 存储边的权值
     edges[front].insert(back, value)
 
-def get_unknown_min(vlist):
-    min = vlist[1]
+
+def get_unknown_min(vlist, vset):
+    min = vlist[1].dist
     index = 0
     for i in range(1, len(vlist)):
         if vlist[i].known is True:
@@ -36,10 +39,11 @@ def get_unknown_min(vlist):
     vset.remove(vlist[index])
     return vlist[index]
 
+
 def dijkstra(vlist, vset, edges, start):
     vlist[start].dist = 0
     while len(vset) != 0:
-        v = get_unknown_min()
+        v = get_unknown_min(vlist, vset)
         v.known = True
         for u in v.outlist:
             if vlist[u].known is True:
@@ -65,6 +69,7 @@ def printpath(start, end):
     print('最短路径为 %s', spath)
     print('该最短路径的长度为', vlist[end].dist)
 
+
 def getpath(start, end, index, path):
     if index == start:
         path.insert(0, start)
@@ -79,7 +84,6 @@ def getpath(start, end, index, path):
 
 if __name__ == '__main__':
 
-    edges = defaultdict(list)
     addEdge(1, 2, 2)
     addEdge(1, 4, 1)
     addEdge(3, 1, 4)
