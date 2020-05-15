@@ -108,7 +108,6 @@ if __name__ == '__main__':
     v7 = Vertex(7, [6])
     vlist = [False, v1, v2, v3, v4, v5, v6, v7]
     vset = set([v1, v2, v3, v4, v5, v6, v7])
-
     dijkstra(vlist, vset, edges, 1)
     printpath(1, 3)
     printpath(1, 6)
