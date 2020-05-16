@@ -1,4 +1,6 @@
-from collections import defaultdict
+global edges
+global vlist
+global vset
 
 
 class Vertex:                              # 顶点类
@@ -16,74 +18,92 @@ class Vertex:                              # 顶点类
             return False
 
     def __hash__(self):
-        return hash(self.vid)
-
-
-edges = defaultdict(list)
+        return hash(self.vid)              # 通过vid计算出顶点对象的哈希值，相同顶点对象具有相同的哈希值
 
 
 def addEdge(front, back, value):           # 存储边的权值
-    edges[front].insert(back, value)
+    edges[(front, back)] = value
 
 
-def get_unknown_min(vlist, vset):
-    min = vlist[1].dist
-    index = 0
+def reset():
+    vset = set([v1, v2, v3, v4, v5, v6, v7])
     for i in range(1, len(vlist)):
-        if vlist[i].known is True:
+        vlist[i].dist = float('inf')
+        vlist[i].known = False
+    return vset, vlist
+
+
+def get_unknown_min():                     # 此函数则代替优先队列的出队操作
+    min = 0
+    index = 0
+    flag = 0                               # 找到第一个unknown顶点的标志
+    for i in range(1, len(vlist)):
+        if vlist[i].known is True:         # 跳过所有known顶点
             continue
         else:
-            if vlist[i].dist < min:
+            if flag == 0:                     # 拿到第一个unknown顶点的权值，与其他unknown顶点作比较
                 min = vlist[i].dist
                 index = i
-    vset.remove(vlist[index])
+            else:
+                if vlist[i].dist < min:
+                    min = vlist[i].dist
+                    index = i
+            flag += 1
+    # 此时已经找到了未知的最小的元素是谁
+    vset.remove(vlist[index])              # 相当于执行出队操作
     return vlist[index]
 
 
-def dijkstra(vlist, vset, edges, start):
+def dijkstra(start):
     vlist[start].dist = 0
     while len(vset) != 0:
-        v = get_unknown_min(vlist, vset)
+        v = get_unknown_min()
         v.known = True
         for u in v.outlist:
             if vlist[u].known is True:
                 continue
             else:
                 if vlist[u].dist == float('inf'):
-                    vlist[u].dist = v.dist + edges[v][u]
-                    vlist[u].prev = v.dist
-                if vlist[u].dist > (v.dist + edges[v][u]):
-                    vlist[u].dist = v.dist + edges[v][u]
-                    vlist[u].prev = v.dist
+                    vlist[u].dist = v.dist + edges[(v.vid, u)]
+                    vlist[u].prev = v.vid
+                if vlist[u].dist > (v.dist + edges[(v.vid, u)]):
+                    vlist[u].dist = v.dist + edges[(v.vid, u)]
+                    vlist[u].prev = v.vid
                 else:
                     pass
 
 
 def printpath(start, end):
     path = []
-    path = getpath(start, end, start, path)
+    path = getpath(start, end, path)
+    length = 1
     spath = ''
-    for s in range(0, len(path)-1):
-        spath = 'V' + str(path(s)) + '-->'
-    spath = spath + str(path[len(path-1)])
-    print('最短路径为 %s', spath)
+    for s in path:
+        if length >= len(path):
+            last = s
+            break
+        spath = spath + 'v' + str(s) + '-->'
+        length += 1
+    spath = spath + 'v' + str(last)
+    print('最短路径为 %s' % spath)
     print('该最短路径的长度为', vlist[end].dist)
 
 
-def getpath(start, end, index, path):
+def getpath(start, index, path):
     if index == start:
         path.insert(0, start)
         return path
     if vlist[index].dist == float('inf'):
         print('从起点到该顶点根本没有路径')
-        return None
-    path.insert(index)
-    path = getpath(start, end, vlist[index].prev, path)
+        return
+    path.insert(0, index)
+    path = getpath(start, vlist[index].prev, path)
     return path
 
 
 if __name__ == '__main__':
 
+    edges = dict()
     addEdge(1, 2, 2)
     addEdge(1, 4, 1)
     addEdge(3, 1, 4)
@@ -105,8 +125,21 @@ if __name__ == '__main__':
     v5 = Vertex(5, [7])
     v6 = Vertex(6, [])
     v7 = Vertex(7, [6])
+
     vlist = [False, v1, v2, v3, v4, v5, v6, v7]
     vset = set([v1, v2, v3, v4, v5, v6, v7])
-    dijkstra(vlist, vset, edges, 1)
+
+    dijkstra(1)
     printpath(1, 3)
     printpath(1, 6)
+    printpath(1, 5)
+
+    vset, vlist = reset()
+    dijkstra(2)
+    printpath(2, 6)
+    printpath(2, 7)
+
+    vset, vlist = reset()
+    dijkstra(4)
+    printpath(4, 6)
+    printpath(4, 7)
