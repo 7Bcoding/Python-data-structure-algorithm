@@ -41,7 +41,7 @@ def get_unknown_min():                     # 此函数则代替优先队列的�
         if vlist[i].known is True:         # 跳过所有known顶点
             continue
         else:
-            if flag == 0:                     # 拿到第一个unknown顶点的权值，与其他unknown顶点作比较
+            if flag == 0:                  # 拿到第一个unknown顶点的权值，与其他unknown顶点作比较
                 min = vlist[i].dist
                 index = i
             else:
