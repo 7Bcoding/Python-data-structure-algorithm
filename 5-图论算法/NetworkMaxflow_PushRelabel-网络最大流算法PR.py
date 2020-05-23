@@ -2,6 +2,18 @@ __author__ = 'xanxus'
 nodeNum, edgeNum = 0, 0
 arcs = []
 
+'''
+Push-relabel的主要思想，首先构造一个函数excess，代表每个节点保存的流量，就是等于该节点的
+入流量-出流量，正常来说，s的保存流量为负，t的保存流量为正，其他节点的保存流量均为0，而算法
+的最终目标就是这个，此外还定义一个height函数（h），表示每个节点的高度。然后，初始化过程是，
+h(s)=n，h(v)=0，对于所有不为s的节点，f(s, u)=c(s, u)，对于所有从s出发的边都默认饱和，这
+是上界。接着，就是Push-relabel的过程了，首先遍历图中所有节点，如果存在非t的且excess大于0
+的节点v，则查看v出发的所有边（v,  w），如果h(v)>h(w)，则可以将label，即excess的流量，传
+递给w，如果该边为正向边，传的大小为bottleneck=min{excess(v), c(v,w) - f(v, w)}，否则
+bottleneck=min{excess(v), f(v, w)}，传完之后，继续寻找excess大于0的节点，注意，如果v有
+边，但所有边都是h(v)<h(w)，则将v的高度提升1，继续寻找。
+'''
+
 
 class Arc(object):
     def __init__(self):
