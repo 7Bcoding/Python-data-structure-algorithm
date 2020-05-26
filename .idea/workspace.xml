@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="beee8ebe-f74e-4c57-8e9c-f0a49221b512" name="Default Changelist" comment="20200514,迪杰斯特拉算法">
-      <change afterPath="$PROJECT_DIR$/5-图论算法/Prim_Kruskal-最小生成树算法.py" afterDir="false" />
+    <list default="true" id="beee8ebe-f74e-4c57-8e9c-f0a49221b512" name="Default Changelist" comment="20200526,最小生成树算法">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/5-图论算法/Prim_Kruskal-最小生成树算法.py" beforeDir="false" afterPath="$PROJECT_DIR$/5-图论算法/Prim_Kruskal-最小生成树算法.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589449826850</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="20200526,最小生成树算法">
+      <created>1590458237873</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590458237873</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -179,7 +186,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="20200513,迪杰斯特拉算法" />
     <MESSAGE value="20200514,迪杰斯特拉算法" />
-    <option name="LAST_COMMIT_MESSAGE" value="20200514,迪杰斯特拉算法" />
+    <MESSAGE value="20200526,最小生成树算法" />
+    <option name="LAST_COMMIT_MESSAGE" value="20200526,最小生成树算法" />
   </component>
   <component name="WindowStateProjectService">
     <state x="656" y="110" key="#NoWeightShortestPathBFS-无权最短路径算法BFS实现" timestamp="1589276582140">
@@ -223,10 +231,10 @@
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1589125605372" />
     <state x="259" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589445109494" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1589449836461">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1590458244686">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1589449836461" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590458244686" />
     <state x="753" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590367838955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

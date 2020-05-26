@@ -1,12 +1,12 @@
 '''
-prim算法基本思路：
+prim算法基本思路：(加点法)
 所有节点分成两个group，一组为已经选取的selected_node（为list类型），一组为candidate_node，
 首先任取一个节点加入到selected_node，然后遍历头节点在selected_node，尾节点在candidate_node
 的边，选取符合这个条件的边里权重最小的边，加入到最小生成树，选出的边的尾节点加入到selected_node，
 并从candidate_node删除。直到candidate_node中没有备选节点（这个循环条件要求所有节点都有边连接，
 即边数要大于等于节点数-1，循环开始前要加入这个条件判断，否则可能会有节点一直在candidate中，导致死循环）。
 
-kruskal算法基本思路：
+kruskal算法基本思路：(加边法)
 先对边按权重从小到大排序，再选取权重最小的一条边，若该边两个节点不在同一个连通分量中，则加入到最小生成树，
 否则计算下一条边，直到遍历完所有的边。
 
