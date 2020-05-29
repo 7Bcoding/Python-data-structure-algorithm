@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beee8ebe-f74e-4c57-8e9c-f0a49221b512" name="Default Changelist" comment="20200528,哈夫曼树">
+      <change afterPath="$PROJECT_DIR$/6-算法设计技巧/最少数量装箱问题-贪婪算法.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/6-算法设计技巧/HuffmanTree-哈夫曼树.py" beforeDir="false" afterPath="$PROJECT_DIR$/6-算法设计技巧/HuffmanTree-哈夫曼树-贪婪算法.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +54,29 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.Dijkstra-迪杰斯特拉算法">
+  <component name="RunManager" selected="Python.最少数量装箱问题-贪婪算法">
+    <configuration name="最少数量装箱问题-贪婪算法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python-data-structure-algorithm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/6-算法设计技巧/最少数量装箱问题-贪婪算法.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Dijkstra-迪杰斯特拉算法" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-data-structure-algorithm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,6 +145,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.最少数量装箱问题-贪婪算法" />
         <item itemvalue="Python.Dijkstra-迪杰斯特拉算法" />
         <item itemvalue="Python.NoWeightShortestPathBFS-无权最短路径算法BFS实现" />
       </list>
@@ -175,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590648402725</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="20200528,哈夫曼树">
+      <created>1590649760456</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590649760456</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -217,22 +247,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="538" y="123" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589450015167" />
-    <state width="1898" height="216" key="GridCell.Tab.0.bottom" timestamp="1589504192829">
+    <state width="1898" height="216" key="GridCell.Tab.0.bottom" timestamp="1590736966300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1898" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589504192829" />
-    <state width="1898" height="216" key="GridCell.Tab.0.center" timestamp="1589504192829">
+    <state width="1898" height="216" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590736966300" />
+    <state width="1898" height="216" key="GridCell.Tab.0.center" timestamp="1590736966300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1898" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589504192829" />
-    <state width="1898" height="216" key="GridCell.Tab.0.left" timestamp="1589504192828">
+    <state width="1898" height="216" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590736966300" />
+    <state width="1898" height="216" key="GridCell.Tab.0.left" timestamp="1590736966299">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1898" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589504192828" />
-    <state width="1898" height="216" key="GridCell.Tab.0.right" timestamp="1589504192829">
+    <state width="1898" height="216" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590736966299" />
+    <state width="1898" height="216" key="GridCell.Tab.0.right" timestamp="1590736966300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1898" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589504192829" />
+    <state width="1898" height="216" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590736966300" />
     <state x="184" y="85" key="MergeDialog" timestamp="1589331277245">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -246,10 +276,10 @@
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1589125605372" />
     <state x="259" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589445109494" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1590648405700">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1590649764090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590648405700" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590649764090" />
     <state x="753" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590367838955">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
