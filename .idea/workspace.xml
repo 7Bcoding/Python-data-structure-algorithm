@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beee8ebe-f74e-4c57-8e9c-f0a49221b512" name="Default Changelist" comment="20200528,哈夫曼树">
-      <change afterPath="$PROJECT_DIR$/6-算法设计技巧/最少数量装箱问题-贪婪算法.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/6-算法设计技巧/最少数量装箱问题-贪婪算法.py" beforeDir="false" afterPath="$PROJECT_DIR$/6-算法设计技巧/最少数量装箱问题-贪婪算法.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

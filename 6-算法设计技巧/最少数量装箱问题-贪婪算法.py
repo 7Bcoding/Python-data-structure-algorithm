@@ -17,8 +17,9 @@
 　　6.降序最佳适应算法(BFD, Best Fit Decreasing)：先对物品按降序排序，再按照最佳适应算法进行装箱。
 '''
 
+
 # 下次适应算法
-def get_min_boxes(things, box_weight):
+def getmin_nextfit(things, box_weight):
     things = sorted(things, reverse=True)  # 将数据由大到小排序
     print(things)
     m = len(things) - 1;
@@ -48,6 +49,6 @@ def get_min_boxes(things, box_weight):
 if __name__ == '__main__':
     # things = [4, 8, 1, 4, 2, 1]
     # box_weight = 10
-    things=[3,5,14,9,13,4,10,4,20,3,1,7,13,8,6,18,20,5,9,8,7,4,3,2]
-    box_weight=20
-    get_min_boxes(things, box_weight)
+    things = [3, 5, 14, 9, 13, 4, 10, 4, 20, 3, 1, 7, 13, 8, 6, 18, 20, 5, 9, 8, 7, 4, 3, 2]
+    box_weight = 20
+    getmin_nextfit(things, box_weight)
