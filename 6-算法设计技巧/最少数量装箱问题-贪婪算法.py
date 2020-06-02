@@ -18,10 +18,10 @@
 '''
 
 
-# 下次适应算法
+# 下次适应算法（效率低下）
 def getmin_nextfit(things, box_weight):
     things = sorted(things, reverse=True)  # 将数据由大到小排序
-    print(things)
+    print('物品列表', things)
     m = len(things) - 1;
     count = 0
     for i in range(len(things)):
@@ -46,9 +46,37 @@ def getmin_nextfit(things, box_weight):
     print('最少需要使用', count, '个容积为', box_weight, '的箱子')
 
 
+# 降序首次适应算法
+def getmin_firstfit(things, box_weight):
+    boxes = []
+    objlist = []
+    things = sorted(things, reverse=True)
+    print('物品列表', things)
+    j = 0
+    while j < len(things):
+        flag = False
+        for i in range(0, len(boxes)):
+            if (boxes[i] + things[j]) <= box_weight:
+                boxes[i] += things[j]
+                objlist[i] = objlist[i] + ' ' + str(things[j])
+                flag = True
+        if flag is False:
+            boxes.append(things[j])
+            objlist.append(str(things[j]))
+        j += 1
+    print('装箱列表：')
+    for objl in objlist:
+        print('{', end='')
+        print(objl, end='')
+        print('}')
+    print(boxes)
+    print('最少需要使用', len(boxes), '个容积为', box_weight, '的箱子')
+
+
 if __name__ == '__main__':
     # things = [4, 8, 1, 4, 2, 1]
     # box_weight = 10
-    things = [3, 5, 14, 9, 13, 4, 10, 4, 20, 3, 1, 7, 13, 8, 6, 18, 20, 5, 9, 8, 7, 4, 3, 2]
+    things = [3, 5, 14, 9, 13, 4, 10, 4, 20, 3, 1, 7, 13, 8, 6, 18, 19, 5, 9, 8, 7, 4, 3, 2]
     box_weight = 20
-    getmin_nextfit(things, box_weight)
+    # getmin_nextfit(things, box_weight)
+    getmin_firstfit(things, box_weight)
