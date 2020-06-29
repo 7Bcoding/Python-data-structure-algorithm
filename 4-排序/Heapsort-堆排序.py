@@ -41,7 +41,7 @@ def percdown(heaplist, hole, length):
         if child != (length-1):
             # print('leftchild = %d,rightchild= %d' % (heaplist[child], heaplist[child+1]) )
             if heaplist[child] < heaplist[child+1]:
-                # 比较左右两个节点，更小的值赋给maxheap
+                # 比较左右两个节点，更大的值赋给maxheap
                 maxheap = child+1
             else:
                 maxheap = child
