@@ -13,9 +13,11 @@ import random
 
 def heapsort(a):
     count = 0
+    # 从heapsize/2处不断下滤，构建一个最大(最小)堆——buildheap
     for i in range((len(a)//2)-1, -1, -1):
         percdown(a, i, len(a))
-        count = count + 1
+
+    # 进行heapsize-1次下滤，完成堆排序
     for i in range(len(a)-1, -1, -1):
         swapvalue(a, 0, i)
         percdown(a, 0, i)
@@ -31,7 +33,7 @@ def swapvalue(a, start, end):
 def percdown(heaplist, hole, length):
 
     tmp = heaplist[hole]
-
+    # 迭代的方式完成下滤（也可使用递归完成）
     while leftchild(hole) < length:
         child = leftchild(hole)
         maxheap = child
