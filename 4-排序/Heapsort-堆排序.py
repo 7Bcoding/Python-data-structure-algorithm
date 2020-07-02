@@ -16,8 +16,6 @@ def heapsort(a):
     for i in range((len(a)//2)-1, -1, -1):
         percdown(a, i, len(a))
         count = count + 1
-        # print('第%d轮下滤后' % count)
-        # print('heaplist=', a)
     for i in range(len(a)-1, -1, -1):
         swapvalue(a, 0, i)
         percdown(a, 0, i)
@@ -36,10 +34,8 @@ def percdown(heaplist, hole, length):
 
     while leftchild(hole) < length:
         child = leftchild(hole)
-        # print('hole= %d hole的值= %d' % (hole,heaplist[hole]))
         maxheap = child
         if child != (length-1):
-            # print('leftchild = %d,rightchild= %d' % (heaplist[child], heaplist[child+1]) )
             if heaplist[child] < heaplist[child+1]:
                 # 比较左右两个节点，更大的值赋给maxheap
                 maxheap = child+1
