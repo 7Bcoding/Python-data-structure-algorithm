@@ -31,7 +31,7 @@ def swapvalue(a, start, end):
 
 
 def percdown(heapL, hole, length):
-    if leftchild(hole) >= length:
+    if leftchild(hole) >= length-1:
         return
     child = leftchild(hole)
     maxh = child
