@@ -34,19 +34,13 @@ def percdown(heapL, hole, length):
     if leftchild(hole) >= length-1:
         return
     child = leftchild(hole)
-    maxh = child
-    if child != (length - 1):
-        if heapL[child] < heapL[child + 1]:
-            # 比较左右两个节点，更大的值赋给maxh
-            maxh = child + 1
-        else:
-            maxh = child
+    if heapL[child] < heapL[child + 1]:
+        # 比较左右两个节点，更大的值赋给maxh
+        maxh = child + 1
     else:
-        if heapL[child] > heapL[child + 1]:
-            heapL[child], heapL[child + 1] = heapL[child + 1], heapL[child]
+        maxh = child
     if heapL[maxh] > heapL[hole]:
         heapL[maxh], heapL[hole] = heapL[hole], heapL[maxh]
-
     percdown(heapL, maxh, length)
 
 
