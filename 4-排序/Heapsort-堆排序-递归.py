@@ -12,7 +12,6 @@ import random
 
 
 def heapsort(a):
-    count = 0
     # 从heapsize/2处不断下滤，构建一个最大(最小)堆——buildheap
     for i in range((len(a)//2)-1, -1, -1):
         percdown(a, i, len(a))
@@ -45,10 +44,7 @@ def percdown(heapL, hole, length):
 
 
 def leftchild(hole):
-    if hole:
-        child = hole*2
-    else:
-        child = hole*2+1
+    child = hole*2+1
     return child
 
 
