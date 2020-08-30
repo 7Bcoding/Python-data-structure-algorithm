@@ -12,7 +12,6 @@ import random
 
 
 def heapsort(a):
-    count = 0
     # 从heapsize/2处不断下滤，构建一个最大(最小)堆——buildheap
     for i in range((len(a)//2)-1, -1, -1):
         percdown(a, i, len(a))
@@ -30,33 +29,27 @@ def swapvalue(a, start, end):
     a[end] = flag
 
 
-def percdown(heaplist, hole, length):
+def percdown(heapL, hole, length):
 
-    tmp = heaplist[hole]
     # 迭代的方式完成下滤（也可使用递归完成）
     while leftchild(hole) < length:
         child = leftchild(hole)
-        maxheap = child
+        maxh = child
         if child != (length-1):
-            if heaplist[child] < heaplist[child+1]:
-                # 比较左右两个节点，更大的值赋给maxheap
-                maxheap = child+1
+            if heapL[child] < heapL[child+1]:
+                # 比较左右两个节点，更大的值赋给maxh
+                maxh = child+1
             else:
-                maxheap = child
+                maxh = child
         else:
-            if heaplist[child] > heaplist[child + 1]:
-                flag = heaplist[child+1]
-                heaplist[child+1] = heaplist[child]
-                heaplist[child] = flag
-        # 比较maxheap和tmp大小，若小于，将更小值推上父节点，反之将tmp推至父节点
-        if heaplist[maxheap] > tmp:
-            heaplist[hole] = heaplist[maxheap]
-        else:
-            break
-            # 每次都将hole下移至原maxheap的位置，继续比较出hole的子节点的更小值
-        hole = maxheap
-    heaplist[hole] = tmp
-    return heaplist
+            if heapL[child] > heapL[child + 1]:
+                heapL[child], heapL[child+1] = heapL[child+1], heapL[child]
+        # 比较maxh和tmp大小，若小于，将更小值推上父节点，反之将tmp推至父节点
+        if heapL[maxh] > heapL[hole]:
+            heapL[maxh], heapL[hole] = heapL[hole], heapL[maxh]
+            # 每次都将hole下移至原maxh的位置，继续比较出hole的子节点的更小值
+        hole = maxh
+    return heapL
 
 
 def leftchild(hole):
@@ -71,5 +64,5 @@ if __name__ == '__main__':
     a = []
     for _ in range(0, 30):
         a.append(random.randint(0, 100))
-    print('排序前heaplist=', a)
+    print('排序前heapL=', a)
     heapsort(a)

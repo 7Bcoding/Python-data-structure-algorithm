@@ -30,10 +30,24 @@ def swapvalue(a, start, end):
     a[end] = flag
 
 
-def percdown(heaplist, hole, length):
+def percdown(heapL, hole, length):
+    if leftchild(hole) >= length:
+        return
+    child = leftchild(hole)
+    maxh = child
+    if child != (length - 1):
+        if heapL[child] < heapL[child + 1]:
+            # 比较左右两个节点，更大的值赋给maxh
+            maxh = child + 1
+        else:
+            maxh = child
+    else:
+        if heapL[child] > heapL[child + 1]:
+            heapL[child], heapL[child + 1] = heapL[child + 1], heapL[child]
+    if heapL[maxh] > heapL[hole]:
+        heapL[maxh], heapL[hole] = heapL[hole], heapL[maxh]
 
-
-    return heaplist
+    percdown(heapL, maxh, length)
 
 
 def leftchild(hole):
@@ -48,5 +62,5 @@ if __name__ == '__main__':
     a = []
     for _ in range(0, 30):
         a.append(random.randint(0, 100))
-    print('排序前heaplist=', a)
+    print('排序前heapL=', a)
     heapsort(a)
